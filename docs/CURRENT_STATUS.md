@@ -2,116 +2,120 @@
 
 > Обновляй этот файл после каждой рабочей сессии, чтобы Cursor знал контекст.
 
-## Текущий статус: 🟡 Planning / Setup
+## Текущий статус: 🟢 Setup Complete / MVP Scaffold Ready
 
-**Последнее обновление:** [ДАТА]
-**Текущий этап:** Этап 1 — Инициализация проекта
+**Последнее обновление:** 2026-03-18
+**Текущий этап:** Этап 2-8 — Базовый каркас готов, дальше полировка секций
 
 ---
 
 ## Что сделано ✅
 
-- [ ] Создана документация проекта (docs/)
-- [ ] Инициализирован Next.js проект
-- [ ] Настроен Tailwind CSS v4
-- [ ] Установлены зависимости
-- [ ] Настроен ThemeProvider (next-themes)
-- [ ] Созданы CSS переменные в globals.css
-- [ ] Настроены шрифты (Syne + DM Sans + JetBrains Mono)
-- [ ] Создан layout.tsx с мета-тегами
-- [ ] Создан Navbar с ThemeToggle
+- [x] Создана документация проекта (docs/)
+- [x] Инициализирован Next.js проект (App Router + TypeScript)
+- [x] Настроены Tailwind, PostCSS, ESLint, TypeScript конфиги
+- [x] Установлены зависимости из `TECH_STACK.md`
+- [x] Настроен ThemeProvider (`next-themes`)
+- [x] Созданы CSS переменные в `globals.css`
+- [x] Подключены шрифты (Syne + DM Sans + JetBrains Mono)
+- [x] Создан `layout.tsx` с мета-тегами и `metadataBase`
+- [x] Создан Navbar + ThemeToggle + ScrollProgress
+- [x] Создана полная структура папок и базовые файлы компонентов по `ARCHITECTURE.md`
+- [x] Проект проходит `npm run type-check`, `npm run lint`, `npm run build`
+- [x] Локальный dev-сервер запускается без ошибок
+- [x] Инициализирован git-репозиторий, сделан первый коммит и создан GitHub-репозиторий
 
 ---
 
 ## В процессе 🔄
 
-*(Записывай сюда что сейчас делаешь)*
+- Полировка визуала и интерактивов до целевого "wow" уровня
+- Доработка анимаций секций (stagger/spring/scroll) и accessibility-поведения
 
 ---
 
 ## Что делать дальше 📋
 
 ### Этап 1 — Фундамент (Day 1, утро)
-- [ ] `npx create-next-app@latest vibe-coding-playground --typescript --tailwind --app`
-- [ ] Установить Motion: `npm install motion`
-- [ ] Установить next-themes: `npm install next-themes`
-- [ ] Установить canvas-confetti: `npm install canvas-confetti @types/canvas-confetti`
-- [ ] Установить clsx + tailwind-merge: `npm install clsx tailwind-merge`
-- [ ] Настроить `globals.css` с CSS переменными из TECH_STACK.md
-- [ ] Создать `lib/utils.ts` с функцией `cn()`
-- [ ] Создать `lib/animations.ts` с Motion variants
-- [ ] Создать `lib/constants.ts` с текстом страницы
-- [ ] Настроить `ThemeProvider` в `layout.tsx`
-- [ ] Создать базовую структуру папок
+- [x] Создан проект на Next.js 15 + TypeScript + App Router
+- [x] Установлен Motion
+- [x] Установлен next-themes
+- [x] Установлен canvas-confetti + типы
+- [x] Установлены clsx + tailwind-merge
+- [x] Настроен `globals.css` с CSS переменными из TECH_STACK.md
+- [x] Создан `lib/utils.ts` с функцией `cn()`
+- [x] Создан `lib/animations.ts` с Motion variants
+- [x] Создан `lib/constants.ts` с текстом страницы
+- [x] Настроен `ThemeProvider` в `layout.tsx`
+- [x] Создана базовая структура папок
 
 ### Этап 2 — Layout и навигация (Day 1, полдень)
-- [ ] `Navbar.tsx` — лого + навигация + ThemeToggle
-- [ ] `ThemeToggle.tsx` — анимированная кнопка темы (sun/moon)
-- [ ] `ScrollProgress.tsx` — прогресс-бар скролла вверху страницы
-- [ ] `SectionLabel.tsx` — переиспользуемый лейбл
-- [ ] `GradientText.tsx` — текст с CSS gradient
-- [ ] `Button.tsx` — все варианты кнопок
-- [ ] `GlassCard.tsx` — glassmorphism карточка
-- [ ] `CursorGlow.tsx` — свечение за курсором (опционально)
+- [x] `Navbar.tsx` — лого + ThemeToggle
+- [x] `ThemeToggle.tsx`
+- [x] `ScrollProgress.tsx`
+- [x] `SectionLabel.tsx`
+- [x] `GradientText.tsx`
+- [x] `Button.tsx` (базовые варианты)
+- [x] `GlassCard.tsx` (базовая реализация)
+- [x] `CursorGlow.tsx`
 
 ### Этап 3 — Hero секция (Day 1, вечер)
+- [x] Подзаголовок и CTA кнопки
+- [x] `ParticleField.tsx` — базовая версия
+- [x] `GlowOrb.tsx` — базовая версия
 - [ ] Анимированный заголовок (stagger по словам через Motion)
-- [ ] Подзаголовок и CTA кнопки
-- [ ] `ParticleField.tsx` — фоновые частицы (CSS animation или canvas)
-- [ ] `GlowOrb.tsx` — декоративные шары на фоне
 - [ ] Scroll indicator с bounce анимацией
 - [ ] **Проверка:** выглядит "wow" на мобилке и десктопе
 
 ### Этап 4 — Animations секция (Day 2, утро)
-- [ ] `useInView` hook для trigger анимаций
-- [ ] Stagger карточка — 6 элементов с задержкой
+- [x] `AnimationsSection.tsx` создана и подключена
+- [x] `useInView` используется для trigger анимаций
+- [ ] Stagger карточка — 6 элементов с задержкой (MVP-версия упрощена)
 - [ ] Spring карточка — mouse follow effect
 - [ ] Scroll progress карточка
-- [ ] `AnimationsSection.tsx` собирает всё вместе
 - [ ] **Проверка:** анимации плавные (60fps), работают на мобилке
 
 ### Этап 5 — Interactivity секция (Day 2, полдень)
-- [ ] `ConfettiButton.tsx` (canvas-confetti)
-- [ ] `MorphButton.tsx` (idle → loading → success)
-- [ ] `AnimatedSlider.tsx` (range + анимированный трек)
-- [ ] `CounterCard.tsx` (+/- с spring анимацией числа)
-- [ ] `InteractivitySection.tsx` собирает всё
+- [x] `ConfettiButton.tsx`
+- [x] `MorphButton.tsx`
+- [x] `AnimatedSlider.tsx`
+- [x] `CounterCard.tsx`
+- [x] `InteractivitySection.tsx` собрана
 - [ ] **Проверка:** всё кликабельно, нет дёрганья
 
 ### Этап 6 — Visual Effects секция (Day 2, вечер)
-- [ ] Glassmorphism карточка
-- [ ] Glow карточка (hover-triggered neon glow)
-- [ ] Animated gradient карточка
-- [ ] Aurora карточка (CSS keyframes)
-- [ ] `VisualEffectsSection.tsx` собирает всё
+- [x] `VisualEffectsSection.tsx` собрана
+- [x] Glassmorphism/Glow/Gradient/Aurora карточки созданы как базовые MVP-блоки
 - [ ] **Проверка:** эффекты работают в обеих темах
 
 ### Этап 7 — Responsive секция (Day 3, утро)
-- [ ] Device switcher (Desktop/Tablet/Mobile)
+- [x] Device switcher (Desktop/Tablet/Mobile)
+- [x] `ResponsiveSection.tsx`
 - [ ] Mock device frame
 - [ ] Анимированный контент внутри
-- [ ] `ResponsiveSection.tsx`
 
 ### Этап 8 — Footer (Day 3, полдень)
-- [ ] Большой заголовок
-- [ ] CTA кнопка
-- [ ] GitHub ссылка
-- [ ] Tech badges
-- [ ] `FooterSection.tsx`
+- [x] Большой заголовок
+- [x] CTA кнопка
+- [x] GitHub ссылка
+- [x] Tech badges
+- [x] `FooterSection.tsx`
 
 ### Этап 9 — Полировка (Day 3, вечер)
-- [ ] SEO мета-теги (title, description, OG image)
+- [x] SEO мета-теги (title, description, OG image, metadataBase)
 - [ ] Lighthouse проверка (цель: ≥ 85 Performance)
 - [ ] Тест на iOS Safari
 - [ ] Тест на Android Chrome
-- [ ] Проверить `prefers-reduced-motion`
+- [x] Базовый хук `useReducedMotion` добавлен
+- [ ] Интегрировать `prefers-reduced-motion` во все анимации
 - [ ] Деплой на Vercel
 
 ---
 
 ## Известные проблемы / Блокеры
 
-*(Пиши сюда что не работает)*
+- Блокеров нет.
+- Примечание: на Windows периодически возможен конфликт `trace`-файла при нескольких `next dev` процессах; решается остановкой лишних node-процессов проекта.
 
 ---
 

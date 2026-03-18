@@ -1,0 +1,39 @@
+name: Deploy to VDS
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    name: SSH → pull → build → restart
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.VDS_HOST }}
+          username: ${{ secrets.VDS_USER }}
+          password: ${{ secrets.VDS_PASSWORD }}
+          port: 22
+          command_timeout: 12m
+          script: |
+            set -e
+            cd /var/www/vibe-coding-playground
+
+            echo "── git pull ──────────────────────────────"
+            git pull origin main
+
+            echo "── npm ci ────────────────────────────────"
+            npm ci --prefer-offline
+
+            echo "── npm build ─────────────────────────────"
+            npm run build
+
+            echo "── pm2 restart ───────────────────────────"
+            pm2 restart vibe-playground
+            pm2 save
+
+            echo "✅ Deploy complete"

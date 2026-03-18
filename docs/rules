@@ -1,0 +1,66 @@
+You are working on **Vibe Coding Playground** — a visual showcase site for vibe coding (AI-assisted development).
+
+## Project Context
+- Read `/docs/PROJECT_OVERVIEW.md` for goals and audience
+- Read `/docs/ARCHITECTURE.md` for file structure and component specs
+- Read `/docs/TECH_STACK.md` for stack decisions and color palette
+- Update `/docs/CURRENT_STATUS.md` after completing tasks
+
+## Stack
+- Next.js 15, TypeScript, Tailwind CSS v4, Motion (Framer Motion v12)
+- Dark theme primary, light theme via `dark:` Tailwind prefix
+- Fonts: Syne (display) + DM Sans (body) + JetBrains Mono (code)
+
+## Code Rules
+1. Use `cn()` from `@/lib/utils` for all className merging
+2. Use Motion variants from `@/lib/animations` — don't create inline variants
+3. Every component has typed props interface — no `any`
+4. Sections go in `src/components/sections/`
+5. Reusable UI goes in `src/components/ui/`
+6. Visual effects go in `src/components/effects/`
+7. Interactive demos go in `src/components/interactive/`
+
+## Animation Rules
+- Use `useInView` from Motion for scroll-triggered animations
+- `viewport={{ once: true, margin: "-100px" }}` for section entries
+- Always respect `prefers-reduced-motion` via `useReducedMotion` hook
+- Stagger delays: 0.1s between children, 0.2s initial delay
+
+## Design Rules
+- Dark theme: bg = #080B14, accent = #00F5FF (cyan), secondary = #7C3AED (violet)
+- Light theme: bg = #F8F9FF, accent = #0099CC
+- Glassmorphism: `backdrop-blur-md bg-white/5 border border-white/10`
+- Glow effect: `shadow-[0_0_30px_rgba(0,245,255,0.3)]`
+- Sections have `py-24 md:py-32` padding
+- Max content width: `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`
+
+## Component Template
+```tsx
+'use client'
+
+import { motion, useInView } from 'motion/react'
+import { useRef } from 'react'
+import { cn } from '@/lib/utils'
+import { fadeUpVariant, staggerContainer } from '@/lib/animations'
+
+interface ComponentNameProps {
+  className?: string
+}
+
+export function ComponentName({ className }: ComponentNameProps) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
+
+  return (
+    <motion.div
+      ref={ref}
+      variants={staggerContainer}
+      initial="hidden"
+      animate={isInView ? 'visible' : 'hidden'}
+      className={cn('', className)}
+    >
+      {/* content */}
+    </motion.div>
+  )
+}
+```

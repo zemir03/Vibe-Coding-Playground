@@ -2,9 +2,9 @@ export const SITE_TEXT = {
   title: "Vibe Coding Playground",
   description:
     "Одностраничный showcase с анимациями, интерактивом и современными визуальными эффектами.",
-  heroTitle: "Build Fast. Ship Beautiful.",
+  heroTitle: "Делай быстро. Делай красиво.",
   heroSubtitle:
-    "Демонстрация возможностей современного фронтенда с упором на motion, interactivity и polish."
+    "Демонстрация возможностей современного фронтенда: motion, интерактив и визуальный полиш."
 };
 
 export const BREAKPOINTS = {

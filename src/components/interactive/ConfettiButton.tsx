@@ -10,7 +10,7 @@ export function ConfettiButton() {
 
   return (
     <Button variant="glow" onClick={handleClick}>
-      Confetti
+      Конфетти
     </Button>
   );
 }

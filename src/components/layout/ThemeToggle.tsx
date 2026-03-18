@@ -20,7 +20,7 @@ export function ThemeToggle() {
       onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label="Переключить тему"
     >
-      {isDark ? "Light" : "Dark"}
+      {isDark ? "Светлая" : "Тёмная"}
     </Button>
   );
 }

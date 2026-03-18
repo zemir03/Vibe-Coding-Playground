@@ -1,9 +1,9 @@
-import { ReactNode } from "react";
+import { HTMLAttributes, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 type GlowColor = "cyan" | "violet" | "green" | "pink";
 
-interface GlassCardProps {
+interface GlassCardProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   className?: string;
   glowColor?: GlowColor;
@@ -17,7 +17,13 @@ const glowMap: Record<GlowColor, string> = {
   pink: "hover:shadow-[0_0_24px_rgba(255,0,110,0.3)]"
 };
 
-export function GlassCard({ children, className, glowColor = "cyan", hover = true }: GlassCardProps) {
+export function GlassCard({
+  children,
+  className,
+  glowColor = "cyan",
+  hover = true,
+  ...props
+}: GlassCardProps) {
   return (
     <div
       className={cn(
@@ -26,6 +32,7 @@ export function GlassCard({ children, className, glowColor = "cyan", hover = tru
         hover && glowMap[glowColor],
         className
       )}
+      {...props}
     >
       {children}
     </div>

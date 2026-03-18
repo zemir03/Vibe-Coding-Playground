@@ -14,8 +14,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary: "bg-[var(--gradient-accent)] text-white",
-  secondary: "border border-[var(--color-border)] bg-transparent text-[var(--color-text-primary)]",
+  primary:
+    "text-white [background:var(--gradient-accent)] hover:opacity-85 shadow-[0_0_24px_rgba(0,245,255,0.2)]",
+  secondary:
+    "border border-[var(--color-border)] bg-transparent text-[var(--color-text-primary)] hover:border-[var(--color-accent-cyan)]/60",
   ghost: "bg-transparent text-[var(--color-text-primary)] hover:underline",
   glow: "bg-[var(--color-accent-violet)] text-white shadow-[0_0_22px_rgba(124,58,237,0.45)]"
 };
@@ -46,7 +48,7 @@ export function Button({
       disabled={disabled || loading}
       {...props}
     >
-      {loading ? "Loading..." : children}
+      {loading ? "Загрузка..." : children}
     </button>
   );
 }

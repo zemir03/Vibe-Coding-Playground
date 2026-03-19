@@ -2,16 +2,17 @@
 
 > Обновляй этот файл после каждой рабочей сессии, чтобы Cursor знал контекст.
 
-## Текущий статус: 🚀 Deployed to VDS / Ready for Development
+## Текущий статус: 🚀 VDS готов — автодеплой через GitHub Actions работает
 
 **Последнее обновление:** 2026-03-18
-**Текущий этап:** Деплой завершён — сервер настроен, приложение запущено, готово к дальнейшей разработке
+**Текущий этап:** Деплой на VDS настроен и поддерживается автодеплоем: пуш в `main` автоматически подтягивает код, собирает и делает `pm2 restart`.
 
 ---
 
 ## Что сделано ✅
 
 - [x] Задеплоено на VDS — http://109.107.189.30:3000 (Ubuntu 24.04, Node.js 22, pm2, автозапуск)
+- [x] Настроен GitHub Actions автодеплой на VDS (SSH → `git pull` → `npm ci` → `npm run build` → `pm2 restart`)
 - [x] Создана документация проекта (docs/)
 - [x] Инициализирован Next.js проект (App Router + TypeScript)
 - [x] Настроены Tailwind, PostCSS, ESLint, TypeScript конфиги
@@ -22,6 +23,8 @@
 - [x] Создан `layout.tsx` с мета-тегами и `metadataBase`
 - [x] Создан Navbar + ThemeToggle + ScrollProgress
 - [x] Создана полная структура папок и базовые файлы компонентов по `ARCHITECTURE.md`
+- [x] Демо-секции доведены до заявленного поведения: Hero, Animations (3D flip/spring/scroll), Interactivity, VisualEffects, Responsive
+- [x] Локализация обновлена: чистый английский бренд `Vibe Coding Playground`, корректные русские тексты без транслитерации, уточнён copy в Hero/Footer
 - [x] Проект проходит `npm run type-check`, `npm run lint`, `npm run build`
 - [x] Локальный dev-сервер запускается без ошибок
 - [x] Инициализирован git-репозиторий, сделан первый коммит и создан GitHub-репозиторий
@@ -31,7 +34,8 @@
 ## В процессе 🔄
 
 - Полировка визуала и интерактивов до целевого "wow" уровня
-- Доработка анимаций секций (stagger/spring/scroll) и accessibility-поведения
+- Проверка 60fps/плавности демо на мобилках и в обеих темах
+- Интегрировать `prefers-reduced-motion` во все анимации (сейчас — базово для Hero)
 
 ---
 
@@ -62,42 +66,42 @@
 
 ### Этап 3 — Hero секция (Day 1, вечер)
 - [x] Подзаголовок и CTA кнопки
-- [x] `ParticleField.tsx` — базовая версия
-- [x] `GlowOrb.tsx` — базовая версия
-- [ ] Анимированный заголовок (stagger по словам через Motion)
-- [ ] Scroll indicator с bounce анимацией
+- [x] `ParticleField.tsx` — живые частицы
+- [x] `GlowOrb.tsx` — пульсация/свечение
+- [x] Анимированный заголовок (stagger по словам через Motion)
+- [x] Scroll indicator с bounce анимацией
 - [ ] **Проверка:** выглядит "wow" на мобилке и десктопе
 
 ### Этап 4 — Animations секция (Day 2, утро)
 - [x] `AnimationsSection.tsx` создана и подключена
 - [x] `useInView` используется для trigger анимаций
-- [ ] Stagger карточка — 6 элементов с задержкой (MVP-версия упрощена)
-- [ ] Spring карточка — mouse follow effect
-- [ ] Scroll progress карточка
+- [x] Блок заменён на 3D flip-карточки (hover + tap на мобильных)
+- [x] Spring карточка — mouse + touch follow effect
+- [x] Scroll progress карточка
 - [ ] **Проверка:** анимации плавные (60fps), работают на мобилке
 
 ### Этап 5 — Interactivity секция (Day 2, полдень)
 - [x] `ConfettiButton.tsx`
 - [x] `MorphButton.tsx`
-- [x] `AnimatedSlider.tsx`
-- [x] `CounterCard.tsx`
+- [x] `AnimatedSlider.tsx` (добавлен touch-drag по треку)
+- [x] `CounterCard.tsx` (реальная spring-анимация числа с overshoot)
 - [x] `InteractivitySection.tsx` собрана
-- [ ] **Проверка:** всё кликабельно, нет дёрганья
+- [x] **Проверка (после правок):** всё кликабельно, нет заметных дёрганий
 
 ### Этап 6 — Visual Effects секция (Day 2, вечер)
 - [x] `VisualEffectsSection.tsx` собрана
-- [x] Glassmorphism/Glow/Gradient/Aurora карточки созданы как базовые MVP-блоки
+- [x] Glassmorphism/Glow/Gradient/Aurora карточки с усиленными hover-эффектами
 - [ ] **Проверка:** эффекты работают в обеих темах
 
 ### Этап 7 — Responsive секция (Day 3, утро)
 - [x] Device switcher (Desktop/Tablet/Mobile)
 - [x] `ResponsiveSection.tsx`
-- [ ] Mock device frame
-- [ ] Анимированный контент внутри
+- [x] Mock device frame
+- [x] Анимированный контент внутри (layout перестраивается)
 
 ### Этап 8 — Footer (Day 3, полдень)
 - [x] Большой заголовок
-- [x] CTA кнопка
+- [x] Блок «Хочешь так же?» (TG/VK ссылки и текст для заказа)
 - [x] GitHub ссылка
 - [x] Tech badges
 - [x] `FooterSection.tsx`

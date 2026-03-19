@@ -1,10 +1,11 @@
 "use client";
 
-import { ChangeEvent, useMemo, useState } from "react";
+import { ChangeEvent, useMemo, useRef, useState } from "react";
 import { motion } from "motion/react";
 
 export function AnimatedSlider() {
   const [value, setValue] = useState(40);
+  const trackRef = useRef<HTMLDivElement | null>(null);
 
   const trackColor = useMemo(() => {
     const green = Math.min(255, 40 + value * 2);
@@ -15,9 +16,28 @@ export function AnimatedSlider() {
     setValue(Number(event.target.value));
   };
 
+  const updateFromClientX = (clientX: number) => {
+    if (!trackRef.current) return;
+    const bounds = trackRef.current.getBoundingClientRect();
+    const ratio = (clientX - bounds.left) / bounds.width;
+    const clamped = Math.max(0, Math.min(1, ratio));
+    setValue(Math.round(clamped * 100));
+  };
+
   return (
     <div className="space-y-3">
-      <div className="relative">
+      <div
+        ref={trackRef}
+        className="relative touch-none"
+        onPointerDown={(event) => {
+          updateFromClientX(event.clientX);
+          event.currentTarget.setPointerCapture(event.pointerId);
+        }}
+        onPointerMove={(event) => {
+          if (event.buttons === 0 && event.pointerType !== "touch") return;
+          updateFromClientX(event.clientX);
+        }}
+      >
         <div className="h-2 rounded-full bg-[var(--color-bg-tertiary)]" />
         <motion.div
           className="pointer-events-none absolute left-0 top-0 h-2 rounded-full"

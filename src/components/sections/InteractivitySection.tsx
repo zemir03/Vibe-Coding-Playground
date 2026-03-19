@@ -16,8 +16,8 @@ export function InteractivitySection() {
 
   return (
     <section id="interactivity" ref={ref} className="mx-auto w-full max-w-6xl px-4 py-16">
-      <SectionLabel label="ИНТЕРАКТИВ" />
-      <h2 className="mt-4 text-3xl font-bold">Поиграй с компонентами</h2>
+      <SectionLabel label="КОМПОНЕНТЫ" />
+      <h2 className="mt-4 text-3xl font-bold">Интерактивные компоненты</h2>
       <p className="mt-3 max-w-2xl text-[var(--color-text-secondary)]">
         Каждый блок управляет своим состоянием: кликай, тяни, считай, проверяй, как ведёт себя
         интерфейс.

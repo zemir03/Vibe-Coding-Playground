@@ -12,8 +12,7 @@ import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { letterVariant, staggerContainer } from "@/lib/animations";
 import { SITE_TEXT } from "@/lib/constants";
 
-const TITLE_WORDS = SITE_TEXT.heroTitle.split(" ");
-// → первые слова делаем с градиентом, остальные — белыми
+const TITLE_LINES = ["Делай быстро.", "Делай красиво."];
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const REPO_URL = "https://github.com/zemir03/Vibe-Coding-Playground";
@@ -50,11 +49,16 @@ export function HeroSection() {
             initial={reducedMotion ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: EASE }}
+            className="space-y-2"
           >
             <span className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.28em] text-[var(--color-accent-cyan)] uppercase">
               <span aria-hidden="true">✦</span>
-              Шоукейc Vibe
+              Showcase Vibe
             </span>
+            <p className="max-w-xl text-sm text-[var(--color-text-secondary)]">
+              Showcase Vibe — это интерактивная демонстрация приёмов vibe coding: анимаций,
+              эффектов и UI-компонентов.
+            </p>
           </motion.div>
 
           {/* ── Animated title — stagger per word ─────────────────────────── */}
@@ -62,20 +66,10 @@ export function HeroSection() {
             className="font-display text-5xl font-extrabold leading-[1.06] sm:text-7xl"
             aria-label={SITE_TEXT.heroTitle}
           >
-            <motion.span
-              variants={staggerContainer}
-              initial="hidden"
-              animate="visible"
-              className="block"
-              aria-hidden="true"
-            >
-              {TITLE_WORDS.map((word, i) => (
-                <motion.span
-                  key={word + i}
-                  variants={letterVariant}
-                  className="mr-[0.22em] inline-block last:mr-0"
-                >
-                  {i < 2 ? <GradientText>{word}</GradientText> : word}
+            <motion.span variants={staggerContainer} initial="hidden" animate="visible" className="block" aria-hidden="true">
+              {TITLE_LINES.map((line, i) => (
+                <motion.span key={line} variants={letterVariant} className="block">
+                  {i === 0 ? <GradientText>{line}</GradientText> : line}
                 </motion.span>
               ))}
             </motion.span>

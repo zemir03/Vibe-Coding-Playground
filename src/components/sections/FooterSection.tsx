@@ -1,7 +1,6 @@
 import { Badge } from "@/components/ui/Badge";
 import { TECH_BADGES } from "@/lib/constants";
 
-const CREATED_IN = "3 дня";
 const REPO_URL = "https://github.com/zemir03/Vibe-Coding-Playground";
 const TELEGRAM_URL = "https://vk.com/away.php?to=https%3A%2F%2Ft.me%2Fizemtsov03&utf=1";
 const VK_URL = "https://vk.com/izemtsov0";
@@ -14,7 +13,7 @@ export function FooterSection() {
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-6">
         <h2 className="font-display text-4xl font-extrabold">Сделано с Claude и Cursor</h2>
         <p className="text-[var(--color-text-secondary)]">
-          Создано как живой шоукейс вайбового кодинга. Время сборки: {CREATED_IN}.
+          Живая демонстрация возможностей vibe coding.
         </p>
         <div className="flex flex-wrap gap-2">
           {TECH_BADGES.map((badge) => (

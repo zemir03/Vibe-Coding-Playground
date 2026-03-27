@@ -1,6 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap");
 @import "tailwindcss";
 
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Syne", "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
 :root {
   --color-bg-primary: #080b14;
   --color-bg-secondary: #0d1220;

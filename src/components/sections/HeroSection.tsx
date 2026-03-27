@@ -46,9 +46,9 @@ export function HeroSection() {
 
           {/* ── Eyebrow label ─────────────────────────────────────────────── */}
           <motion.div
-            initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: EASE }}
+            transition={{ duration: reducedMotion ? 0 : 0.5, ease: EASE }}
             className="space-y-2"
           >
             <span className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.28em] text-[var(--color-accent-cyan)] uppercase">
@@ -66,7 +66,7 @@ export function HeroSection() {
             className="font-display text-5xl font-extrabold leading-[1.06] sm:text-7xl"
             aria-label={SITE_TEXT.heroTitle}
           >
-            <motion.span variants={staggerContainer} initial="hidden" animate="visible" className="block" aria-hidden="true">
+            <motion.span variants={staggerContainer} initial={false} animate="visible" className="block" aria-hidden="true">
               {TITLE_LINES.map((line, i) => (
                 <motion.span key={line} variants={letterVariant} className="block">
                   {i === 0 ? <GradientText>{line}</GradientText> : line}
@@ -77,9 +77,9 @@ export function HeroSection() {
 
           {/* ── Subtitle — fade-up at 400 ms ──────────────────────────────── */}
           <motion.p
-            initial={reducedMotion ? false : { opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.4, ease: EASE }}
+            transition={{ duration: reducedMotion ? 0 : 0.65, delay: reducedMotion ? 0 : 0.4, ease: EASE }}
             className="max-w-xl text-lg leading-relaxed text-[var(--color-text-secondary)] sm:text-xl"
           >
             {SITE_TEXT.heroSubtitle}
@@ -87,9 +87,9 @@ export function HeroSection() {
 
           {/* ── CTA buttons — scale-in at 800 ms ──────────────────────────── */}
           <motion.div
-            initial={reducedMotion ? false : { opacity: 0, scale: 0.94 }}
+            initial={false}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.8, ease: EASE }}
+            transition={{ duration: reducedMotion ? 0 : 0.5, delay: reducedMotion ? 0 : 0.8, ease: EASE }}
             className="flex flex-wrap gap-3"
           >
             <Button size="lg" variant="primary" onClick={() => scrollToId("animations")}>
@@ -107,9 +107,9 @@ export function HeroSection() {
 
         {/* ── Scroll indicator — bounce at 1 200 ms ───────────────────────── */}
         <motion.div
-          initial={reducedMotion ? false : { opacity: 0, y: 8 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.2, ease: EASE }}
+          transition={{ duration: reducedMotion ? 0 : 0.6, delay: reducedMotion ? 0 : 1.2, ease: EASE }}
           className="mt-20 flex flex-col items-center gap-2 sm:absolute sm:bottom-0 sm:left-1/2 sm:mt-0 sm:-translate-x-1/2"
           aria-hidden="true"
         >
